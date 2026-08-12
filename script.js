@@ -3,17 +3,48 @@
 // 共通スクリプト
 //
 // 構成:
-//   1. initHeroReveal()    … ヒーローの英文コピーを静かにフェードインさせる。
-//                              （派手な演出は行わない／スマホでも軽い）
-//   2. initScrollReveal()  … セクション見出しなどを、スクロールで少しだけ
+//   1. initSplash()        … オープニング演出（全ページ共通）。幕（ローズ×ラベンダー
+//                              のグラデーション）が下から上へ流れて2秒程度で消える。
+//                              sessionStorageを使い、ページごとに同一セッション中は
+//                              一度だけ表示する（再訪時は表示しない）。
+//   2. initHeroReveal()    … ヒーローの英文コピーを静かにフェードインさせる。
+//   3. initScrollReveal()  … セクション見出しなどを、スクロールで少しだけ
 //                              浮き上がらせる（IntersectionObserver・軽量）。
-//   3. initMobileNav()     … 固定ヘッダーのハンバーガーメニュー開閉。
-//   4. initBottomNav()     … スマホ下部固定ナビの現在地ハイライト。
-//   5. initBackToTop()     … 一定量スクロールしたら「トップへ戻る」ボタンを表示。
-//   6. initCopyButtons()   … プロンプトのコピー機能＋「コピーしました」トースト。
-//   7. initAccordions()    … 開閉式の項目（使うページがあれば）。
-//   8. initSmoothAnchors() … ページ内リンクのスムーススクロール。
+//   4. initMobileNav()     … 固定ヘッダーのハンバーガーメニュー開閉。
+//   5. initBottomNav()     … スマホ下部固定ナビの現在地ハイライト。
+//   6. initBackToTop()     … 一定量スクロールしたら「トップへ戻る」ボタンを表示。
+//   7. initCopyButtons()   … プロンプトのコピー機能＋「コピーしました」トースト。
+//   8. initAccordions()    … 開閉式の項目（使うページがあれば）。
+//   9. initSmoothAnchors() … ページ内リンクのスムーススクロール。
 // ============================================================
+
+function initSplash() {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const storageKey = 'klc-splash-shown:' + location.pathname;
+  const alreadyShown = sessionStorage.getItem(storageKey) === '1';
+
+  if (alreadyShown || prefersReducedMotion) {
+    splash.remove();
+    return;
+  }
+
+  sessionStorage.setItem(storageKey, '1');
+
+  const closeSplash = () => {
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 650);
+  };
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => splash.classList.add('show'));
+  });
+
+  // 演出は2秒程度で終わり、操作を妨げない（幕が下から上へ流れて消える）
+  setTimeout(closeSplash, 2000);
+}
 
 function initHeroReveal() {
   const hero = document.querySelector('.hero');
@@ -227,6 +258,7 @@ function initTapLift() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSplash();
   initHeroReveal();
   initScrollReveal();
   initMobileNav();

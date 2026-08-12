@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LESSON4 会議・面談・アンケートをAIで効率化 | 生成AI×広報デザイン実践講座（鹿児島レディスカレッジ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">LESSON 4<span class="splash-sub">会議・面談・アンケートをAIで効率化</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="logo-icon"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span></span>
+        <span>生成AI×広報デザイン実践講座<span class="sub">鹿児島レディスカレッジ 2026.08.20</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html">HOME</a>
+        <a href="01-ai-guide.html">AI GUIDE</a>
+        <a href="02-instagram.html">INSTAGRAM</a>
+        <a href="03-writing.html">WRITING</a>
+        <a href="04-workflow.html" class="active">WORKFLOW</a>
+        <a href="../index.html#prompts">PROMPTS</a>
+        <a href="../index.html#safety">SAFETY</a>
+        <a href="../index.html#question">QUESTION</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="../index.html#agenda"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>AGENDA</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="02-instagram.html"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>INSTAGRAM</a>
+    <a href="03-writing.html"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>WRITING</a>
+    <a href="04-workflow.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>WORKFLOW</a>
+    <a href="05-improve.html"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>自分の仕事を改善</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPT LIBRARY</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#agenda">AGENDA</a><span class="sep">/</span>
+      <span>LESSON4</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">groups</span>LESSON 4</span>
+      <span class="agenda-time">60-75分</span>
+      <h1>会議・面談・アンケートをAIで効率化</h1>
+      <p class="section-lead" style="margin-top:1rem;">録音やアンケートのデータを、AIに任せて記録・分析の時間を減らします。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="card case-card reveal" style="margin-bottom:1.25rem;">
+      <div class="case-head"><span class="num">1</span><h3>会議</h3></div>
+      <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
+        <div class="flow-step">録音</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step accent">AI</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">議事録</div>
+      </div>
+      <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
+        <div class="prompt-card-head">
+          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
+          <button type="button" class="copy-btn" data-copy-target="#prompt-meeting">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt-meeting" style="background:#ffffff;">添付した音声は会議を録音したものです。
+聞き取れる内容だけを使用し、
+以下の形式で整理してください。
+
+1. 会議の目的
+2. 主な内容
+3. 決定事項
+4. 今後行うこと
+5. 担当者
+6. 期限
+
+聞き取れない箇所や
+不明な内容を推測して補わないでください。</div>
+      </div>
+    </div>
+
+    <div class="card case-card reveal" style="margin-bottom:1.25rem;">
+      <div class="case-head"><span class="num">2</span><h3>面談</h3></div>
+      <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
+        <div class="flow-step">録音</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step accent">AI</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">記録</div>
+      </div>
+      <div class="caution-card" style="margin-bottom:1.25rem;">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <p><strong>IMPORTANT</strong><br>学生や保護者の個人情報、健康情報、家庭状況などのセンシティブな情報を、組織のルールを確認せず個人向けAIへ入力しないでください。録音する場合は、必要な同意や学校のルールを確認してください。</p>
+      </div>
+      <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
+        <div class="prompt-card-head">
+          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
+          <button type="button" class="copy-btn" data-copy-target="#prompt-interview">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt-interview" style="background:#ffffff;">添付した音声は、学生との面談を録音したものです。
+聞き取れる内容だけを使用し、
+以下の形式で記録を作成してください。
+
+1. 面談の目的
+2. 学生の状況・発言の要点
+3. 教職員からの助言・伝えたこと
+4. 今後のフォローアップ
+5. 次回の面談予定
+
+氏名などの個人情報は、
+記録内では仮名またはイニシャルに置き換えてください。
+聞き取れない箇所や不明な内容を推測して補わないでください。</div>
+      </div>
+    </div>
+
+    <div class="card case-card reveal">
+      <div class="case-head"><span class="num">3</span><h3>アンケート</h3></div>
+      <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
+        <div class="flow-step">Googleフォーム</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">スプレッドシート</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step accent">Gemini</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">分析</div>
+      </div>
+      <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
+        <div class="prompt-card-head">
+          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
+          <button type="button" class="copy-btn" data-copy-target="#prompt-survey">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt-survey" style="background:#ffffff;">添付したアンケート結果を分析してください。
+以下の観点で整理してください。
+
+1. 回答全体の傾向
+2. 多かった意見
+3. 少数だが重要な意見
+4. 改善すべき点
+5. 次回に向けた提案
+
+数値はデータに基づいて示し、
+存在しない回答や数値を作らないでください。</div>
+      </div>
+    </div>
+
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>個人情報の扱いに迷ったら、SAFETYを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../index.html#safety" class="btn btn-outline btn-sm">SAFETY</a>
+        <a href="../index.html#prompts" class="btn btn-outline btn-sm">PROMPT LIBRARY</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="05-improve.html" class="btn btn-primary">次のLESSONへ：自分の仕事を1つAIで改善する<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="03-writing.html" class="btn btn-outline">前のLESSONへ</a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="下部メニュー">
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPTS</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

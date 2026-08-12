@@ -8,10 +8,15 @@
 <meta name="training-date" content="2026年8月20日 鹿児島レディスカレッジ職員研修（講師：和田倫周）">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ===== オープニング演出（sessionStorageで1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">Create Smarter. Work Lighter.<span class="splash-sub">スマホ1台でできる！生成AI×広報デザイン実践講座</span></p>
+  </div>
 
   <!-- コピー完了などを通知するライブリージョン（視覚的には非表示） -->
   <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
@@ -25,10 +30,10 @@
       </a>
       <nav class="header-nav" aria-label="メインメニュー">
         <a href="#top">HOME</a>
-        <a href="#ai-guide">AI GUIDE</a>
-        <a href="#instagram">INSTAGRAM</a>
-        <a href="#writing">WRITING</a>
-        <a href="#workflow">WORKFLOW</a>
+        <a href="courses/01-ai-guide.html">AI GUIDE</a>
+        <a href="courses/02-instagram.html">INSTAGRAM</a>
+        <a href="courses/03-writing.html">WRITING</a>
+        <a href="courses/04-workflow.html">WORKFLOW</a>
         <a href="#prompts">PROMPTS</a>
         <a href="#safety">SAFETY</a>
         <a href="#question">QUESTION</a>
@@ -49,12 +54,14 @@
     <a href="#top"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
     <a href="#goal"><span class="material-symbols-outlined" aria-hidden="true">flag</span>今日のゴール</a>
     <a href="#voices"><span class="material-symbols-outlined" aria-hidden="true">forum</span>皆さんの声</a>
+    <a href="#instructor"><span class="material-symbols-outlined" aria-hidden="true">person</span>講師紹介</a>
+    <a href="#book"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>著作紹介</a>
     <a href="#agenda"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>AGENDA</a>
-    <a href="#ai-guide"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
-    <a href="#instagram"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>INSTAGRAM</a>
-    <a href="#writing"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>WRITING</a>
-    <a href="#workflow"><span class="material-symbols-outlined" aria-hidden="true">groups</span>WORKFLOW</a>
-    <a href="#improve"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>自分の仕事を改善</a>
+    <a href="courses/01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="courses/02-instagram.html"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>INSTAGRAM</a>
+    <a href="courses/03-writing.html"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>WRITING</a>
+    <a href="courses/04-workflow.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>WORKFLOW</a>
+    <a href="courses/05-improve.html"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>自分の仕事を改善</a>
     <a href="#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPT LIBRARY</a>
     <a href="#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
     <a href="#home-screen"><span class="material-symbols-outlined" aria-hidden="true">add_to_home_screen</span>ホーム画面に追加</a>
@@ -116,6 +123,93 @@
     </div>
   </section>
 
+  <!-- 講師プロフィール：ここから編集 -->
+  <!-- ===== 講師紹介 ===== -->
+  <section id="instructor" class="block">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="badge badge-solid">Instructor</p>
+        <h2 class="section-title">講師紹介</h2>
+      </div>
+
+      <div class="card card-hover instructor-card reveal">
+        <div class="instructor-flex">
+          <!-- 講師写真：assets/images/instructor-illustration.png を差し替えてください（画像が無くても崩れません） -->
+          <div class="instructor-photo">
+            <img src="assets/images/instructor-illustration.png" alt="和田倫周 プロフィールイラスト" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <span class="material-symbols-outlined avatar-fallback-icon" aria-hidden="true">person</span>
+          </div>
+          <div>
+            <h3 class="instructor-name">和田 倫周 <span class="yomi">（わだ みちひろ）</span></h3>
+            <p class="instructor-role">鹿児島県立開陽高等学校 定時制課程 進路支援部主任 / 国語科教諭・司書教諭</p>
+
+            <!-- 資格バッジ：画像は assets/images/google-trainer-badge.png・canvassador-badge.png を差し替えてください（画像が無くても崩れません） -->
+            <div class="badge-row">
+              <span class="grad-pill">Google for Education 認定イノベーター アカデミーMEL26参加<br>（2026/09/29-10/01 オーストラリア・メルボルン）</span>
+            </div>
+            <div class="badge-row">
+              <span class="grad-pill">Google for Education 認定トレーナー</span>
+              <img src="assets/images/google-trainer-badge.png" alt="Google for Education Certified Trainer" class="badge-img" onerror="this.style.display='none';">
+            </div>
+            <div class="badge-row">
+              <span class="grad-pill">Canva 認定教育アンバサダー</span>
+              <img src="assets/images/canvassador-badge.png" alt="Canva Canvassador 2026" class="badge-img-round" onerror="this.style.display='none';">
+            </div>
+            <div class="pill-row">
+              <span class="grad-pill">GEG Mentors 2025-2026</span>
+              <span class="grad-pill">GEG Kagoshima 認定共同リーダー</span>
+              <span class="grad-pill">Gemini 認定教育者</span>
+              <span class="grad-pill">CEC鹿児島リーダー</span>
+            </div>
+
+            <p class="instructor-bio">
+              1969年東京生まれ。大学在学中からテレビ局での深夜番組制作に携わり、卒業後は東京赤坂のヨーロッパ専門の旅行会社に勤務。退職後、古着と雑貨の輸入で起業した後、教職へ。初任・鹿屋高校、屋久島高校、鶴丸高校、鹿屋高校(2回目)を経て、現在は開陽高校定時制課程で進路支援部主任を務める。ICTを活かした探究的な教育実践に注力している。
+            </p>
+
+            <div class="quote-box">
+              「AIは仕事を奪う道具ではなく、時間を取り戻す道具。」を信条に、日々の校務・広報にAIを活かす方法を伝えている。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 講師プロフィール：ここまで -->
+
+  <!-- 著作情報：ここから編集 -->
+  <!-- ===== 著作紹介 ===== -->
+  <section id="book" class="block panel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="badge badge-solid">Book</p>
+        <h2 class="section-title">著作紹介</h2>
+      </div>
+
+      <!-- 著作カード1：ここから編集（書名・出版社・著者・紹介文・画像・リンクを差し替え） -->
+      <div class="card card-hover book-card reveal">
+        <!-- 書影：assets/images/book-cover.png を差し替えてください（画像が無くても崩れません） -->
+        <div class="book-cover">
+          <img src="assets/images/book-cover.png" alt="先生のためのCanva教育版 やさしい入門 書影" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="material-symbols-outlined avatar-fallback-icon" aria-hidden="true">menu_book</span>
+        </div>
+        <div class="book-info">
+          <h3>先生のためのCanva教育版 やさしい入門</h3>
+          <p class="publisher">[監修] 坂本良晶　[著者] 飯山彩也香、五十嵐太一、江藤由布、遠藤隆平、大野翔、恩地麻里、片岸力丸、柴田大翔、長田夢、藤井海、古川俊、<strong>和田倫周</strong></p>
+          <ul class="desc">
+            <li><span class="label">定価:</span><span>1,980円（本体1,800円+税10%）</span></li>
+            <li><span class="label">発売日:</span><span>2026.5.28</span></li>
+            <li><span class="label">判型:</span><span>B5変形 / 208ページ</span></li>
+            <li><span class="label">ISBN:</span><span>978-4-297-15660-2</span></li>
+          </ul>
+          <a href="https://gihyo.jp/book/2026/978-4-297-15660-2" target="_blank" rel="noopener" class="btn btn-primary btn-sm">技術評論社サイトで見る</a>
+        </div>
+      </div>
+      <!-- 著作カード1：ここまで -->
+
+    </div>
+  </section>
+  <!-- 著作情報：ここまで -->
+
   <!-- ===== AGENDA（90分） ===== -->
   <section id="agenda" class="block panel">
     <div class="wrap">
@@ -132,35 +226,35 @@
           <p class="desc">アンケート結果・今日のゴール・スマホだけでも十分使える・生成AIは仕事の相棒。</p>
           <span class="btn btn-outline btn-sm">見る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
-        <a href="#ai-guide" class="card card-hover agenda-card">
+        <a href="courses/01-ai-guide.html" class="card card-hover agenda-card">
           <span class="agenda-time">10-25分</span>
           <span class="agenda-label">Lesson 1</span>
           <h3>ChatGPT・Gemini・Claude<br>どう使い分ける？</h3>
           <p class="desc">「どれが一番？」ではなく「何をしたい？」で選ぶ考え方を身につけます。</p>
           <span class="btn btn-outline btn-sm">見る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
-        <a href="#instagram" class="card card-hover agenda-card">
+        <a href="courses/02-instagram.html" class="card card-hover agenda-card">
           <span class="agenda-time">25-45分</span>
           <span class="agenda-label">Lesson 2</span>
           <h3>生成AIでInstagramを作る</h3>
           <p class="desc">写真1枚から、投稿画像と投稿文をAIと一緒に仕上げます。</p>
           <span class="btn btn-outline btn-sm">見る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
-        <a href="#writing" class="card card-hover agenda-card">
+        <a href="courses/03-writing.html" class="card card-hover agenda-card">
           <span class="agenda-time">45-60分</span>
           <span class="agenda-label">Lesson 3</span>
           <h3>文章作成をAIに任せる</h3>
           <p class="desc">お礼状・案内文・連絡・校正など、日々の文章作成を効率化します。</p>
           <span class="btn btn-outline btn-sm">見る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
-        <a href="#workflow" class="card card-hover agenda-card">
+        <a href="courses/04-workflow.html" class="card card-hover agenda-card">
           <span class="agenda-time">60-75分</span>
           <span class="agenda-label">Lesson 4</span>
           <h3>会議・面談・アンケートをAIで効率化</h3>
           <p class="desc">録音・データをAIに渡し、記録や分析にかかる時間を減らします。</p>
           <span class="btn btn-outline btn-sm">見る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
-        <a href="#improve" class="card card-hover agenda-card">
+        <a href="courses/05-improve.html" class="card card-hover agenda-card">
           <span class="agenda-time">75-85分</span>
           <span class="agenda-label">Lesson 5</span>
           <h3>自分の仕事を1つAIで改善する</h3>
@@ -173,527 +267,6 @@
         <span class="agenda-label">Wrap Up</span>
         <h3>まとめ・質問</h3>
         <p class="desc">ご質問への回答と、本日のまとめを行います。困ったときはいつでもこのサイトに戻ってきてください。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LESSON1：ChatGPT・Gemini・Claude ===== -->
-  <section id="ai-guide" class="block">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="badge badge-solid">Lesson 1</p>
-        <h2 class="section-title-en"><span>Pick by Purpose,</span><span>Not by Rank.</span></h2>
-        <p class="section-lead">AIは、「どれが一番？」ではなく「何をしたい？」で選びます。今日は代表的な3つのAIの得意分野をつかみましょう。</p>
-      </div>
-
-      <div class="grid grid-3 reveal">
-        <div class="card card-hover ai-card">
-          <div class="ai-card-head">
-            <span class="material-symbols-outlined" aria-hidden="true">chat</span>
-            <h3>まず相談するなら<span class="name">ChatGPT</span></h3>
-          </div>
-          <p class="desc">文章、画像、アイデア、資料分析など、幅広い仕事をひとつのチャットで進めやすいAI。</p>
-          <ul class="use-list">
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>文章作成</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Instagram投稿文</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>画像生成・写真のブラッシュアップ</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>資料の整理・アイデア出し</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>何から始めればよいか分からない時</li>
-          </ul>
-          <div class="key-phrase">
-            <p class="en">Think Together.</p>
-            <p class="jp">「一緒に考えるAI」</p>
-          </div>
-        </div>
-
-        <div class="card card-hover ai-card">
-          <div class="ai-card-head">
-            <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
-            <h3>Googleを使うなら<span class="name">Gemini</span></h3>
-          </div>
-          <p class="desc">Google Workspaceなど、Googleのサービスを使う仕事と組み合わせやすいAI。</p>
-          <ul class="use-list">
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Googleフォーム・アンケート分析</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Googleドライブ・ドキュメント</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Googleスプレッドシート</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Gmail・Googleカレンダー</li>
-          </ul>
-          <div class="key-phrase">
-            <p class="en">Work with Google.</p>
-            <p class="jp">「Googleと一緒に働くAI」</p>
-          </div>
-        </div>
-
-        <div class="card card-hover ai-card">
-          <div class="ai-card-head">
-            <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
-            <h3>形にするなら<span class="name">Claude</span></h3>
-          </div>
-          <p class="desc">長い文章の整理や、Webサイト、コード、ツールなど、アイデアを実際に使える形に仕上げる用途に向くAI。</p>
-          <ul class="use-list">
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Webサイト制作</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>長文整理・企画整理</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>HTML・コード・簡単な業務ツール</li>
-            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>アイデアを完成品にしたい時</li>
-          </ul>
-          <div class="key-phrase">
-            <p class="en">Turn Ideas into Things.</p>
-            <p class="jp">「アイデアを形にするAI」</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-head reveal" style="margin-top:3rem;">
-        <p class="badge badge-solid">Quick Match</p>
-        <h3 class="section-title">AI使い分け早見表</h3>
-        <p class="section-lead">迷ったときの早見表です。「まず試すなら」という位置づけで見てください。</p>
-      </div>
-      <div class="match-grid reveal">
-        <div class="match-card"><span class="match-task">文章を書く</span><span class="match-ai"><span class="tool-pill">ChatGPT</span><span class="tool-pill">Claude</span></span></div>
-        <div class="match-card"><span class="match-task">Instagram投稿文</span><span class="match-ai"><span class="tool-pill">ChatGPT</span></span></div>
-        <div class="match-card"><span class="match-task">画像を作る</span><span class="match-ai"><span class="tool-pill">ChatGPT</span></span></div>
-        <div class="match-card"><span class="match-task">写真をブラッシュアップ</span><span class="match-ai"><span class="tool-pill">ChatGPT</span></span></div>
-        <div class="match-card"><span class="match-task">Googleフォーム分析</span><span class="match-ai"><span class="tool-pill">Gemini</span></span></div>
-        <div class="match-card"><span class="match-task">Google Drive活用</span><span class="match-ai"><span class="tool-pill">Gemini</span></span></div>
-        <div class="match-card"><span class="match-task">Google Workspace活用</span><span class="match-ai"><span class="tool-pill">Gemini</span></span></div>
-        <div class="match-card"><span class="match-task">長文整理</span><span class="match-ai"><span class="tool-pill">Claude</span><span class="tool-pill">ChatGPT</span></span></div>
-        <div class="match-card"><span class="match-task">Webサイト制作</span><span class="match-ai"><span class="tool-pill">Claude</span></span></div>
-        <div class="match-card"><span class="match-task">業務ツール制作</span><span class="match-ai"><span class="tool-pill">Claude</span></span></div>
-        <div class="match-card"><span class="match-task">迷ったとき</span><span class="match-ai"><span class="tool-pill">ChatGPT</span></span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LESSON2：Instagram ===== -->
-  <section id="instagram" class="block panel">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="badge badge-solid">Lesson 2</p>
-        <h2 class="section-title-en"><span>From Photo</span><span>to Post.</span></h2>
-        <p class="section-lead">写真1枚から、広報をつくる。</p>
-      </div>
-
-      <div class="grid grid-2 reveal">
-        <div class="card flow-card">
-          <h4>Before</h4>
-          <div class="flow-diagram">
-            <div class="flow-step">写真</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">Word</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">文章を考える</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">レイアウトを整える</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">修正</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">完成</div>
-          </div>
-        </div>
-        <div class="card flow-card">
-          <h4>After</h4>
-          <div class="flow-diagram">
-            <div class="flow-step">写真</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step accent">AI</div>
-            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-            <div class="flow-step">完成</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:2.5rem;">
-        <div class="prompt-card reveal">
-          <div class="prompt-card-head">
-            <div>
-              <h4>Instagram投稿画像プロンプト</h4>
-              <p class="prompt-scene">スマホの写真アプリから、そのまま貼り付けて使えます。</p>
-              <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-            </div>
-            <button type="button" class="copy-btn" data-copy-target="#prompt-insta-image">
-              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-            </button>
-          </div>
-          <div class="prompt-body" id="prompt-insta-image">あなたは専門学校の広報を担当する
-プロのSNSデザイナーです。
-添付した写真を使用して、
-鹿児島レディスカレッジの
-Instagram投稿用画像を作成してください。
-
-【対象】
-進路を考えている高校生と保護者
-
-【目的】
-学校の楽しさや魅力が伝わり、
-「ここに行ってみたい」と思ってもらうこと
-
-【デザイン】
-・明るい
-・親しみやすい
-・清潔感がある
-・若い世代にも親しみやすい
-・情報を詰め込みすぎない
-・写真を主役にする
-
-添付写真に写っている人物や
-実際の内容を勝手に変更せず、
-写真の魅力を生かしてください。</div>
-        </div>
-
-        <div class="prompt-card reveal">
-          <div class="prompt-card-head">
-            <div>
-              <h4>Instagram投稿文プロンプト</h4>
-              <p class="prompt-scene">画像ができたら、あわせて投稿文もつくりましょう。</p>
-              <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-            </div>
-            <button type="button" class="copy-btn" data-copy-target="#prompt-insta-caption">
-              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-            </button>
-          </div>
-          <div class="prompt-body" id="prompt-insta-caption">以下の内容をもとに、
-鹿児島レディスカレッジの
-Instagram投稿文を作成してください。
-
-【対象】
-高校生と保護者
-
-【条件】
-・最初の1文で興味を引く
-・明るく親しみやすい
-・長すぎない
-・絵文字は適度に
-・最後に行動を促す一文を入れる
-・与えられていない情報を推測して追加しない
-
-【投稿内容】
-ここに内容を入力</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LESSON3：文章作成 ===== -->
-  <section id="writing" class="block">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="badge badge-solid">Lesson 3</p>
-        <h2 class="section-title-en"><span>Write Less.</span><span>Communicate Better.</span></h2>
-        <p class="section-lead">よく書く文章から、今日は2つを一緒に試してみましょう。他の4つも同じ考え方で使えます。</p>
-      </div>
-
-      <div class="grid grid-6 reveal" style="margin-bottom:2.5rem;">
-        <a href="#prompt-thanks" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">volunteer_activism</span><span class="label">お礼状</span></a>
-        <a href="#prompt-guide" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">campaign</span><span class="label">案内文</span></a>
-        <a href="#prompt-student" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">school</span><span class="label">学生への連絡</span></a>
-        <a href="#prompt-parent" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">family_restroom</span><span class="label">保護者への連絡</span></a>
-        <a href="#prompt-proof" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">spellcheck</span><span class="label">文章校正</span></a>
-        <a href="#instagram" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span><span class="label">Instagram文章</span></a>
-      </div>
-
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4 id="prompt-thanks-h">お礼状プロンプト</h4>
-            <p class="prompt-scene">オープンキャンパス参加へのお礼状に。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-thanks">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-thanks">以下の内容をもとに、
-丁寧で温かみのあるお礼状を作成してください。
-
-【対象】
-高校生
-
-【目的】
-オープンキャンパス参加へのお礼
-
-【条件】
-・堅すぎない
-・親しみやすい
-・300字以内
-・学校の魅力が自然に伝わる
-・事実として与えられていない情報は追加しない
-
-【内容】
-ここに入力</div>
-      </div>
-
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4 id="prompt-guide-h">案内文プロンプト</h4>
-            <p class="prompt-scene">行事や制度のお知らせに。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-guide">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-guide">以下の内容をもとに、
-高校生と保護者に分かりやすい
-案内文を作成してください。
-
-【目的】
-ここに入力
-
-【伝えたい内容】
-ここに入力
-
-【条件】
-・重要事項を先に書く
-・簡潔にする
-・日時や場所を見つけやすくする
-・丁寧だが堅すぎない文章にする
-・不足する情報を勝手に補わない</div>
-      </div>
-
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4 id="prompt-student-h">学生への連絡プロンプト</h4>
-            <p class="prompt-scene">提出物や行事の連絡を、親しみやすく分かりやすく。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-student">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-student">以下の内容をもとに、
-学生に向けた連絡文を作成してください。
-
-【対象】
-本校の学生
-
-【伝えたい内容】
-ここに入力
-
-【条件】
-・要点を最初に伝える
-・親しみやすいが、要件が明確に伝わる文章にする
-・提出期限や持ち物がある場合は目立たせる
-・不足する情報を勝手に補わない</div>
-      </div>
-
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4 id="prompt-parent-h">保護者への連絡プロンプト</h4>
-            <p class="prompt-scene">丁寧さと分かりやすさを両立させたい連絡文に。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-parent">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-parent">以下の内容をもとに、
-保護者に向けた連絡文を作成してください。
-
-【対象】
-学生の保護者
-
-【伝えたい内容】
-ここに入力
-
-【条件】
-・敬語を適切に使い、丁寧な文章にする
-・重要事項（日時・持ち物・締切など）を分かりやすく示す
-・堅苦しくなりすぎないようにする
-・不足する情報を勝手に補わない</div>
-      </div>
-
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4 id="prompt-proof-h">文章校正プロンプト</h4>
-            <p class="prompt-scene">書いた文章の仕上げに。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT / Claude</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-proof">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-proof">以下の文章を、意味を変えずに読みやすく校正してください。
-
-【文章】
-ここに入力
-
-【条件】
-・誤字脱字を修正する
-・敬語の誤りを直す
-・冗長な表現を簡潔にする
-・元の文章の意図や事実は変更しない
-・修正した箇所がわかるように簡単に説明を添える</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LESSON4：会議・面談・アンケート ===== -->
-  <section id="workflow" class="block panel">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="badge badge-solid">Lesson 4</p>
-        <h2 class="section-title-en"><span>Record.</span><span>Summarize.</span><span>Move On.</span></h2>
-        <p class="section-lead">録音やアンケートのデータを、AIに任せて記録・分析の時間を減らします。</p>
-      </div>
-
-      <div class="card case-card reveal" style="margin-bottom:1.25rem;">
-        <div class="case-head"><span class="num">1</span><h3>会議</h3></div>
-        <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
-          <div class="flow-step">録音</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step accent">AI</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step">議事録</div>
-        </div>
-        <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
-          <div class="prompt-card-head">
-            <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
-            <button type="button" class="copy-btn" data-copy-target="#prompt-meeting">
-              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-            </button>
-          </div>
-          <div class="prompt-body" id="prompt-meeting" style="background:#ffffff;">添付した音声は会議を録音したものです。
-聞き取れる内容だけを使用し、
-以下の形式で整理してください。
-
-1. 会議の目的
-2. 主な内容
-3. 決定事項
-4. 今後行うこと
-5. 担当者
-6. 期限
-
-聞き取れない箇所や
-不明な内容を推測して補わないでください。</div>
-        </div>
-      </div>
-
-      <div class="card case-card reveal" style="margin-bottom:1.25rem;">
-        <div class="case-head"><span class="num">2</span><h3>面談</h3></div>
-        <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
-          <div class="flow-step">録音</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step accent">AI</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step">記録</div>
-        </div>
-        <div class="caution-card" style="margin-bottom:1.25rem;">
-          <span class="material-symbols-outlined" aria-hidden="true">warning</span>
-          <p><strong>IMPORTANT</strong><br>学生や保護者の個人情報、健康情報、家庭状況などのセンシティブな情報を、組織のルールを確認せず個人向けAIへ入力しないでください。録音する場合は、必要な同意や学校のルールを確認してください。</p>
-        </div>
-        <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
-          <div class="prompt-card-head">
-            <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
-            <button type="button" class="copy-btn" data-copy-target="#prompt-interview">
-              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-            </button>
-          </div>
-          <div class="prompt-body" id="prompt-interview" style="background:#ffffff;">添付した音声は、学生との面談を録音したものです。
-聞き取れる内容だけを使用し、
-以下の形式で記録を作成してください。
-
-1. 面談の目的
-2. 学生の状況・発言の要点
-3. 教職員からの助言・伝えたこと
-4. 今後のフォローアップ
-5. 次回の面談予定
-
-氏名などの個人情報は、
-記録内では仮名またはイニシャルに置き換えてください。
-聞き取れない箇所や不明な内容を推測して補わないでください。</div>
-        </div>
-      </div>
-
-      <div class="card case-card reveal">
-        <div class="case-head"><span class="num">3</span><h3>アンケート</h3></div>
-        <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
-          <div class="flow-step">Googleフォーム</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step">スプレッドシート</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step accent">Gemini</div>
-          <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-          <div class="flow-step">分析</div>
-        </div>
-        <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
-          <div class="prompt-card-head">
-            <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
-            <button type="button" class="copy-btn" data-copy-target="#prompt-survey">
-              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-            </button>
-          </div>
-          <div class="prompt-body" id="prompt-survey" style="background:#ffffff;">添付したアンケート結果を分析してください。
-以下の観点で整理してください。
-
-1. 回答全体の傾向
-2. 多かった意見
-3. 少数だが重要な意見
-4. 改善すべき点
-5. 次回に向けた提案
-
-数値はデータに基づいて示し、
-存在しない回答や数値を作らないでください。</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LESSON5：自分の仕事を1つAIで改善する ===== -->
-  <section id="improve" class="block">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="badge badge-solid">Lesson 5</p>
-        <h2 class="section-title-en"><span>What Will You</span><span>Make Lighter?</span></h2>
-        <p class="section-lead">あなたが今、一番時間を取られている仕事は何ですか？</p>
-      </div>
-      <div class="voice-grid reveal" style="margin-bottom:2rem;">
-        <span class="voice-chip">Instagram</span>
-        <span class="voice-chip">お礼状</span>
-        <span class="voice-chip">会議録</span>
-        <span class="voice-chip">アンケート</span>
-        <span class="voice-chip">予定共有</span>
-        <span class="voice-chip">学生への連絡</span>
-        <span class="voice-chip">資料作成</span>
-        <span class="voice-chip">繰り返し作業</span>
-      </div>
-      <div class="prompt-card reveal">
-        <div class="prompt-card-head">
-          <div>
-            <h4>業務改善プロンプト</h4>
-            <p class="prompt-scene">今の仕事のやり方を、AIと一緒に見直してみましょう。</p>
-            <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT / Gemini / Claude</p>
-          </div>
-          <button type="button" class="copy-btn" data-copy-target="#prompt-improve">
-            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="prompt-improve">私は現在、
-以下の業務に時間がかかっています。
-
-【現在の仕事】
-ここに入力
-
-【現在の方法】
-ここに入力
-
-この業務を、
-ChatGPT
-Gemini
-Claude
-Google Workspace
-などを活用して
-できるだけ簡単にする方法を提案してください。
-
-【条件】
-・できるだけ無料または低コスト
-・スマートフォンでも利用できる
-・初心者でも運用できる
-・作業手順を具体的に示す
-・現在の方法との違いも説明する</div>
       </div>
     </div>
   </section>
@@ -997,7 +570,7 @@ Google Workspace
         Lecturer: Michihiro Wada
       </p>
       <div class="foot-links">
-        <a href="#ai-guide">AI GUIDE</a>
+        <a href="courses/01-ai-guide.html">AI GUIDE</a>
         <a href="#prompts">PROMPTS</a>
         <a href="#safety">SAFETY</a>
         <a href="#question">QUESTION</a>
@@ -1009,7 +582,7 @@ Google Workspace
   <!-- ===== モバイル下部固定ナビ ===== -->
   <nav class="bottom-nav" aria-label="下部メニュー">
     <a href="#top"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
-    <a href="#ai-guide"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="courses/01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
     <a href="#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPTS</a>
     <a href="#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
     <a href="#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LESSON5 自分の仕事を1つAIで改善する | 生成AI×広報デザイン実践講座（鹿児島レディスカレッジ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">LESSON 5<span class="splash-sub">自分の仕事を1つAIで改善する</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="logo-icon"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span></span>
+        <span>生成AI×広報デザイン実践講座<span class="sub">鹿児島レディスカレッジ 2026.08.20</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html">HOME</a>
+        <a href="01-ai-guide.html">AI GUIDE</a>
+        <a href="02-instagram.html">INSTAGRAM</a>
+        <a href="03-writing.html">WRITING</a>
+        <a href="04-workflow.html">WORKFLOW</a>
+        <a href="../index.html#prompts">PROMPTS</a>
+        <a href="../index.html#safety">SAFETY</a>
+        <a href="../index.html#question">QUESTION</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="../index.html#agenda"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>AGENDA</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="02-instagram.html"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>INSTAGRAM</a>
+    <a href="03-writing.html"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>WRITING</a>
+    <a href="04-workflow.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>WORKFLOW</a>
+    <a href="05-improve.html"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>自分の仕事を改善</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPT LIBRARY</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#agenda">AGENDA</a><span class="sep">/</span>
+      <span>LESSON5</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>LESSON 5</span>
+      <span class="agenda-time">75-85分</span>
+      <h1>自分の仕事を1つAIで改善する</h1>
+      <p class="section-lead" style="margin-top:1rem;">あなたが今、一番時間を取られている仕事は何ですか？</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="voice-grid reveal" style="margin-bottom:2rem;">
+      <span class="voice-chip">Instagram</span>
+      <span class="voice-chip">お礼状</span>
+      <span class="voice-chip">会議録</span>
+      <span class="voice-chip">アンケート</span>
+      <span class="voice-chip">予定共有</span>
+      <span class="voice-chip">学生への連絡</span>
+      <span class="voice-chip">資料作成</span>
+      <span class="voice-chip">繰り返し作業</span>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>業務改善プロンプト</h4>
+          <p class="prompt-scene">今の仕事のやり方を、AIと一緒に見直してみましょう。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT / Gemini / Claude</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-improve">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-improve">私は現在、
+以下の業務に時間がかかっています。
+
+【現在の仕事】
+ここに入力
+
+【現在の方法】
+ここに入力
+
+この業務を、
+ChatGPT
+Gemini
+Claude
+Google Workspace
+などを活用して
+できるだけ簡単にする方法を提案してください。
+
+【条件】
+・できるだけ無料または低コスト
+・スマートフォンでも利用できる
+・初心者でも運用できる
+・作業手順を具体的に示す
+・現在の方法との違いも説明する</div>
+    </div>
+
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>お疲れさまでした。他のプロンプトはPROMPT LIBRARYにまとまっています。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../index.html#prompts" class="btn btn-outline btn-sm">PROMPT LIBRARY</a>
+        <a href="../index.html#safety" class="btn btn-outline btn-sm">SAFETY</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="../index.html#prompts" class="btn btn-primary">PROMPT LIBRARYへ<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="04-workflow.html" class="btn btn-outline">前のLESSONへ</a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="下部メニュー">
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPTS</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

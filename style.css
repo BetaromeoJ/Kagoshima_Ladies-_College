@@ -50,7 +50,11 @@
   --bottom-nav-height: 64px;
 
   --font-base: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', sans-serif;
-  --font-display: 'Fraunces', 'Georgia', serif;
+  /* 英字の見出し・ヒーローコピーも、サイト全体と同じ丸ゴシックに統一 */
+  --font-display: var(--font-base);
+
+  --color-curtain: var(--color-lavender); /* スプラッシュ幕：サイトのラベンダーと同色（単色） */
+  --color-curtain-accent: #ffd9a0;  /* スプラッシュ中央文字の差し色（目立たせる） */
 }
 
 /* ------------------------------------------------------------
@@ -352,6 +356,49 @@ section.block.panel {
 }
 
 /* ------------------------------------------------------------
+   スプラッシュ演出（幕が下から上へ流れて消える／全ページ共通）
+   sessionStorageでページごとに同一セッション中は一度だけ表示する。
+   ------------------------------------------------------------ */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-curtain);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.75rem;
+  transform: translateY(0);
+  transition: transform .6s cubic-bezier(.65,0,.35,1);
+}
+.splash-overlay.hide {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.splash-text {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: clamp(1.3rem, 4vw, 2.1rem);
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(30,22,58,0.45);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+  padding: 0 1.5rem;
+}
+.splash-overlay.show .splash-text { opacity: 1; transform: translateY(0); }
+.splash-sub {
+  display: block;
+  margin-top: .7rem;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--color-curtain-accent);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
    ヒーロー
    ------------------------------------------------------------ */
 .hero {
@@ -376,7 +423,10 @@ section.block.panel {
   font-weight: 600;
   font-size: clamp(2.6rem, 11vw, 5.6rem);
   letter-spacing: -0.02em;
-  line-height: 1.04;
+  /* 1.04だと丸ゴシックのディセンダー（g/y等の下がり)がPCの大きな文字サイズで
+     見切れるため、行間に少し余裕を持たせる */
+  line-height: 1.22;
+  padding-bottom: 0.05em;
 }
 .hero-title-en .hl {
   display: block;
@@ -524,6 +574,57 @@ section.block.panel {
 }
 
 /* ------------------------------------------------------------
+   パンくずリスト（レッスンページ）
+   ------------------------------------------------------------ */
+.breadcrumb {
+  padding-top: calc(var(--header-height) + 1.25rem);
+  font-size: 0.82rem;
+  color: var(--color-text-sub);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.breadcrumb a { color: var(--color-rose-deep); font-weight: 700; }
+.breadcrumb .sep { color: var(--color-text-faint); }
+
+/* ------------------------------------------------------------
+   レッスンページ ヒーロー
+   ------------------------------------------------------------ */
+.course-hero { padding: 1.5rem 0 2.5rem; }
+.course-hero .course-num-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, var(--color-rose), var(--color-lavender));
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  margin-right: 0.5rem;
+}
+.course-hero h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-top: 0.75rem;
+}
+
+/* ------------------------------------------------------------
+   ページ下部ナビ（次のレッスン／トップへ）
+   ------------------------------------------------------------ */
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 2.5rem 0 4rem;
+}
+
+/* ------------------------------------------------------------
    声（アンケートニーズ）チップ
    ------------------------------------------------------------ */
 .voice-grid {
@@ -549,6 +650,110 @@ section.block.panel {
   border-color: transparent;
   color: var(--color-rose-deep);
 }
+
+/* ------------------------------------------------------------
+   講師紹介
+   ------------------------------------------------------------ */
+.instructor-card {
+  padding: 2rem;
+}
+.instructor-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+@media (min-width: 720px) {
+  .instructor-flex { flex-direction: row; align-items: flex-start; }
+}
+.instructor-photo {
+  position: relative;
+  width: 160px; height: 160px;
+  border-radius: var(--radius-full);
+  background: var(--color-pill-bg);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+  font-size: 2.4rem;
+  overflow: hidden;
+}
+.instructor-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.avatar-fallback-icon {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 720px) { .instructor-photo { margin: 0; } }
+.instructor-name { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+.instructor-name .yomi { font-size: 0.9rem; font-weight: 500; color: var(--color-text-faint); }
+.instructor-role { color: var(--color-text-sub); font-size: 0.9rem; margin-bottom: 1rem; }
+.badge-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.grad-pill {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, #fbeef2 0%, #f1edfa 100%);
+  color: var(--color-rose-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+}
+.badge-img { height: 88px; width: auto; }
+.badge-img-round { height: 64px; width: 64px; border-radius: var(--radius-full); object-fit: cover; }
+.instructor-bio { color: var(--color-text); font-size: 0.92rem; line-height: 1.85; margin-bottom: 1rem; }
+.quote-box {
+  background: linear-gradient(90deg, #fbeef2 0%, #f1edfa 100%);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.3rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* ------------------------------------------------------------
+   著作紹介
+   ------------------------------------------------------------ */
+.book-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 720px) {
+  .book-card { flex-direction: row; align-items: flex-start; }
+}
+.book-cover {
+  position: relative;
+  width: 192px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 20px -10px rgba(74,61,122,0.35);
+  background: var(--color-pill-bg);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+  font-size: 1.8rem;
+  overflow: hidden;
+}
+.book-cover img { width: 100%; height: auto; display: block; object-fit: contain; }
+@media (min-width: 720px) { .book-cover { margin: 0; } }
+.book-info h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; line-height: 1.4; }
+.book-info .publisher { color: var(--color-text-sub); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.8; }
+.book-info .publisher strong { color: var(--color-ink); }
+.book-info .desc { list-style: none; font-size: 0.9rem; color: var(--color-text); line-height: 1.9; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.15rem; }
+.book-info .desc li { display: flex; gap: 0.5rem; }
+.book-info .desc li .label { font-weight: 700; flex-shrink: 0; }
 
 /* ------------------------------------------------------------
    アジェンダカード（LESSON一覧）
@@ -1052,6 +1257,6 @@ section.block.panel {
 
 /* 印刷対応 */
 @media print {
-  .site-header, .mobile-nav, .nav-overlay, .back-to-top, .toast, .menu-btn, .bottom-nav { display: none !important; }
+  #splash, .site-header, .mobile-nav, .nav-overlay, .back-to-top, .toast, .menu-btn, .bottom-nav { display: none !important; }
   body { background: #fff; padding-bottom: 0; }
 }

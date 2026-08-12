@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LESSON3 文章作成をAIに任せる | 生成AI×広報デザイン実践講座（鹿児島レディスカレッジ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">LESSON 3<span class="splash-sub">文章作成をAIに任せる</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="logo-icon"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span></span>
+        <span>生成AI×広報デザイン実践講座<span class="sub">鹿児島レディスカレッジ 2026.08.20</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html">HOME</a>
+        <a href="01-ai-guide.html">AI GUIDE</a>
+        <a href="02-instagram.html">INSTAGRAM</a>
+        <a href="03-writing.html" class="active">WRITING</a>
+        <a href="04-workflow.html">WORKFLOW</a>
+        <a href="../index.html#prompts">PROMPTS</a>
+        <a href="../index.html#safety">SAFETY</a>
+        <a href="../index.html#question">QUESTION</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="../index.html#agenda"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>AGENDA</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="02-instagram.html"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>INSTAGRAM</a>
+    <a href="03-writing.html"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>WRITING</a>
+    <a href="04-workflow.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>WORKFLOW</a>
+    <a href="05-improve.html"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>自分の仕事を改善</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPT LIBRARY</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#agenda">AGENDA</a><span class="sep">/</span>
+      <span>LESSON3</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span>LESSON 3</span>
+      <span class="agenda-time">45-60分</span>
+      <h1>文章作成をAIに任せる</h1>
+      <p class="section-lead" style="margin-top:1rem;">よく書く文章から、今日は2つを一緒に試してみましょう。他の4つも同じ考え方で使えます。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="grid grid-6 reveal" style="margin-bottom:2.5rem;">
+      <a href="#prompt-thanks" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">volunteer_activism</span><span class="label">お礼状</span></a>
+      <a href="#prompt-guide" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">campaign</span><span class="label">案内文</span></a>
+      <a href="#prompt-student" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">school</span><span class="label">学生への連絡</span></a>
+      <a href="#prompt-parent" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">family_restroom</span><span class="label">保護者への連絡</span></a>
+      <a href="#prompt-proof" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">spellcheck</span><span class="label">文章校正</span></a>
+      <a href="02-instagram.html" class="card card-hover tag-card"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span><span class="label">Instagram文章</span></a>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>お礼状プロンプト</h4>
+          <p class="prompt-scene">オープンキャンパス参加へのお礼状に。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-thanks">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-thanks">以下の内容をもとに、
+丁寧で温かみのあるお礼状を作成してください。
+
+【対象】
+高校生
+
+【目的】
+オープンキャンパス参加へのお礼
+
+【条件】
+・堅すぎない
+・親しみやすい
+・300字以内
+・学校の魅力が自然に伝わる
+・事実として与えられていない情報は追加しない
+
+【内容】
+ここに入力</div>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>案内文プロンプト</h4>
+          <p class="prompt-scene">行事や制度のお知らせに。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-guide">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-guide">以下の内容をもとに、
+高校生と保護者に分かりやすい
+案内文を作成してください。
+
+【目的】
+ここに入力
+
+【伝えたい内容】
+ここに入力
+
+【条件】
+・重要事項を先に書く
+・簡潔にする
+・日時や場所を見つけやすくする
+・丁寧だが堅すぎない文章にする
+・不足する情報を勝手に補わない</div>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>学生への連絡プロンプト</h4>
+          <p class="prompt-scene">提出物や行事の連絡を、親しみやすく分かりやすく。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-student">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-student">以下の内容をもとに、
+学生に向けた連絡文を作成してください。
+
+【対象】
+本校の学生
+
+【伝えたい内容】
+ここに入力
+
+【条件】
+・要点を最初に伝える
+・親しみやすいが、要件が明確に伝わる文章にする
+・提出期限や持ち物がある場合は目立たせる
+・不足する情報を勝手に補わない</div>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>保護者への連絡プロンプト</h4>
+          <p class="prompt-scene">丁寧さと分かりやすさを両立させたい連絡文に。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-parent">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-parent">以下の内容をもとに、
+保護者に向けた連絡文を作成してください。
+
+【対象】
+学生の保護者
+
+【伝えたい内容】
+ここに入力
+
+【条件】
+・敬語を適切に使い、丁寧な文章にする
+・重要事項（日時・持ち物・締切など）を分かりやすく示す
+・堅苦しくなりすぎないようにする
+・不足する情報を勝手に補わない</div>
+    </div>
+
+    <div class="prompt-card reveal">
+      <div class="prompt-card-head">
+        <div>
+          <h4>文章校正プロンプト</h4>
+          <p class="prompt-scene">書いた文章の仕上げに。</p>
+          <p class="prompt-recommend"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: ChatGPT / Claude</p>
+        </div>
+        <button type="button" class="copy-btn" data-copy-target="#prompt-proof">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
+        </button>
+      </div>
+      <div class="prompt-body" id="prompt-proof">以下の文章を、意味を変えずに読みやすく校正してください。
+
+【文章】
+ここに入力
+
+【条件】
+・誤字脱字を修正する
+・敬語の誤りを直す
+・冗長な表現を簡潔にする
+・元の文章の意図や事実は変更しない
+・修正した箇所がわかるように簡単に説明を添える</div>
+    </div>
+
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>他のプロンプトも探すなら、PROMPT LIBRARYを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../index.html#prompts" class="btn btn-outline btn-sm">PROMPT LIBRARY</a>
+        <a href="../index.html#safety" class="btn btn-outline btn-sm">SAFETY</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="04-workflow.html" class="btn btn-primary">次のLESSONへ：会議・面談・アンケートをAIで効率化<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="02-instagram.html" class="btn btn-outline">前のLESSONへ</a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="下部メニュー">
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>HOME</a>
+    <a href="01-ai-guide.html"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI GUIDE</a>
+    <a href="../index.html#prompts"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span>PROMPTS</a>
+    <a href="../index.html#safety"><span class="material-symbols-outlined" aria-hidden="true">shield</span>SAFETY</a>
+    <a href="../index.html#question"><span class="material-symbols-outlined" aria-hidden="true">help</span>QUESTION</a>
+  </nav>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
