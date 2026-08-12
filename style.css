@@ -420,7 +420,7 @@ section.block.panel {
 
 .hero-title-en {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 800;
   font-size: clamp(2.6rem, 11vw, 5.6rem);
   letter-spacing: -0.02em;
   /* 1.04だと丸ゴシックのディセンダー（g/y等の下がり)がPCの大きな文字サイズで
@@ -1123,7 +1123,7 @@ section.block.panel {
   text-align: center;
   color: #fff;
 }
-.question-block .section-title-en { color: #fff; }
+.question-block .section-title { color: #fff; }
 .question-block p { color: rgba(255,255,255,0.9); font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.5rem; }
 .question-block .btn-primary { background: #ffffff; color: var(--color-ink); }
 .question-block .btn-primary:hover { background: #fff5f8; }
