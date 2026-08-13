@@ -423,10 +423,10 @@ section.block.panel {
   font-weight: 800;
   font-size: clamp(2.6rem, 11vw, 5.6rem);
   letter-spacing: -0.02em;
-  /* 1.04だと丸ゴシックのディセンダー（g/y等の下がり)がPCの大きな文字サイズで
-     見切れるため、行間に少し余裕を持たせる */
-  line-height: 1.22;
-  padding-bottom: 0.05em;
+  /* 画像と同じ、詰まり気味の行間。ただし丸ゴシックのディセンダー（g/y等の
+     下がり）がPCの大きな文字サイズで見切れないよう、わずかに余裕を残す */
+  line-height: 1.1;
+  padding-bottom: 0.08em;
 }
 .hero-title-en .hl {
   display: block;
@@ -436,11 +436,9 @@ section.block.panel {
   transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
 }
 .hero-title-en .hl.line2 {
-  margin-top: 0.35em;
-  background: linear-gradient(90deg, var(--color-rose-deep), var(--color-lavender));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* グラデーション＋background-clip:textは行間を詰めると文字が欠けるため、
+     サイトのメインアクセント（ローズ）の単色でバランスを取る */
+  color: var(--color-rose-deep);
   transition-delay: .12s;
 }
 .hero.is-ready .hero-eyebrow,
@@ -754,6 +752,39 @@ section.block.panel {
 .book-info .desc { list-style: none; font-size: 0.9rem; color: var(--color-text); line-height: 1.9; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.15rem; }
 .book-info .desc li { display: flex; gap: 0.5rem; }
 .book-info .desc li .label { font-weight: 700; flex-shrink: 0; }
+
+/* 著作の実績を目立たせるバッジ（Amazon順位・増刷など） */
+.achievement-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.75rem 0 1.1rem;
+}
+.achievement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(90deg, #ffd9a0 0%, #f3b23c 100%);
+  color: #4a3410;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 16px -8px rgba(230,150,20,0.55);
+}
+.achievement-badge .material-symbols-outlined { font-size: 18px; color: #8a5a06; }
+.co-author-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-rose-deep);
+  background: var(--color-pill-bg);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
 
 /* ------------------------------------------------------------
    アジェンダカード（LESSON一覧）
