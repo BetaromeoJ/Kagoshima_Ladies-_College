@@ -379,8 +379,9 @@ section.block.panel {
 .splash-text {
   color: #ffffff;
   font-weight: 800;
-  font-size: clamp(1.3rem, 4vw, 2.1rem);
+  font-size: clamp(1.5rem, 5.5vw, 2.6rem);
   letter-spacing: 0.02em;
+  line-height: 1.3;
   text-align: center;
   text-shadow: 0 2px 14px rgba(30,22,58,0.45);
   opacity: 0;
@@ -421,16 +422,19 @@ section.block.panel {
 .hero-title-en {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.6rem, 11vw, 5.6rem);
+  /* より大きく、力強く見えるサイズに拡大 */
+  font-size: clamp(3.2rem, 14vw, 7.5rem);
   letter-spacing: -0.02em;
   /* 画像と同じ、詰まり気味の行間。ただし丸ゴシックのディセンダー（g/y等の
      下がり）がPCの大きな文字サイズで見切れないよう、わずかに余裕を残す */
   line-height: 1.1;
-  padding-bottom: 0.08em;
+  padding-bottom: 0.1em;
 }
 .hero-title-en .hl {
   display: block;
   color: var(--color-ink);
+  /* 文字を見やすく装飾する、控えめな立体感のドロップシャドウ */
+  text-shadow: 0 6px 24px rgba(34,30,36,0.14);
   opacity: 0;
   transform: translateY(22px);
   transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
@@ -439,6 +443,7 @@ section.block.panel {
   /* グラデーション＋background-clip:textは行間を詰めると文字が欠けるため、
      サイトのメインアクセント（ローズ）の単色でバランスを取る */
   color: var(--color-rose-deep);
+  text-shadow: 0 6px 24px rgba(180,92,120,0.22);
   transition-delay: .12s;
 }
 .hero.is-ready .hero-eyebrow,
@@ -1263,6 +1268,21 @@ section.block.panel {
 .site-footer .foot-en span { display: block; }
 .site-footer .foot-meta { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 2; }
 .site-footer .foot-meta strong { color: rgba(255,255,255,0.85); }
+.site-footer .foot-contact { margin-top: 1.1rem; }
+.site-footer .foot-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-full);
+}
+.site-footer .foot-contact a:hover { background: rgba(255,255,255,0.18); }
+.site-footer .foot-contact .material-symbols-outlined { font-size: 17px; color: rgba(255,255,255,0.85); }
 .site-footer .foot-links {
   display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
   margin: 1.5rem 0; font-size: 0.82rem;
