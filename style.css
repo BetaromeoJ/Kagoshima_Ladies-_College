@@ -788,6 +788,27 @@ section.block.panel {
 @media (prefers-reduced-motion: reduce) {
   .achievement-badge { animation: none; }
 }
+
+/* 講師の際立った実績（海外アカデミー参加など）を目立たせるバッジ */
+.honor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(90deg, #ffdfae 0%, #f5a623 55%, #f3b23c 100%);
+  color: #4a3410;
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid #fff3da;
+  box-shadow: 0 10px 24px -8px rgba(217,130,10,0.65), 0 0 0 3px rgba(255,217,160,0.35);
+  animation: achievementPulse 2.6s ease-in-out infinite;
+  max-width: 100%;
+}
+.honor-badge .material-symbols-outlined { font-size: 22px; color: #8a5a06; flex-shrink: 0; }
+.honor-badge .honor-title { display: block; font-weight: 800; font-size: 0.92rem; line-height: 1.5; }
+.honor-badge .honor-sub { display: block; margin-top: 0.15rem; font-weight: 700; font-size: 0.78rem; color: #6b4a12; }
+@media (prefers-reduced-motion: reduce) {
+  .honor-badge { animation: none; }
+}
 .co-author-tag {
   display: inline-flex;
   align-items: center;
