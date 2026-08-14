@@ -762,22 +762,32 @@ section.block.panel {
 .achievement-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin: 0.75rem 0 1.1rem;
+  gap: 0.7rem;
+  margin: 1rem 0 1.3rem;
 }
 .achievement-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: linear-gradient(90deg, #ffd9a0 0%, #f3b23c 100%);
+  gap: 0.45rem;
+  background: linear-gradient(90deg, #ffdfae 0%, #f5a623 55%, #f3b23c 100%);
   color: #4a3410;
   font-weight: 800;
-  font-size: 0.85rem;
-  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  padding: 0.75rem 1.4rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 6px 16px -8px rgba(230,150,20,0.55);
+  border: 1.5px solid #fff3da;
+  box-shadow: 0 10px 24px -8px rgba(217,130,10,0.65), 0 0 0 3px rgba(255,217,160,0.35);
+  animation: achievementPulse 2.6s ease-in-out infinite;
 }
-.achievement-badge .material-symbols-outlined { font-size: 18px; color: #8a5a06; }
+.achievement-badge .material-symbols-outlined { font-size: 21px; color: #8a5a06; }
+@keyframes achievementPulse {
+  0%, 100% { box-shadow: 0 10px 24px -8px rgba(217,130,10,0.65), 0 0 0 3px rgba(255,217,160,0.35); }
+  50% { box-shadow: 0 12px 28px -6px rgba(217,130,10,0.8), 0 0 0 6px rgba(255,217,160,0.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .achievement-badge { animation: none; }
+}
 .co-author-tag {
   display: inline-flex;
   align-items: center;
