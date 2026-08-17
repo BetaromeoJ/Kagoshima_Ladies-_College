@@ -75,18 +75,23 @@
   </section>
 
   <div class="wrap">
+    <div class="tip-card reveal" style="margin-bottom:1.25rem;">
+      <span class="material-symbols-outlined" aria-hidden="true">mic</span>
+      <p><strong>録音のやり方</strong><br>会議・面談は、スマートフォンの録音アプリでそのまま録音します。iPhoneの方は標準の「ボイスメモ」アプリ、Androidの方はアプリ一覧を開き、「レコーダー」「ボイスレコーダー」「音声レコーダー」のいずれかを探してください（機種によって名称が異なります）。</p>
+    </div>
+
     <div class="card case-card reveal" style="margin-bottom:1.25rem;">
       <div class="case-head"><span class="num">1</span><h3>会議</h3></div>
       <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
         <div class="flow-step">録音</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step accent">AI</div>
+        <div class="flow-step accent">Gemini</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
         <div class="flow-step">議事録</div>
       </div>
       <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
         <div class="prompt-card-head">
-          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
+          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini / Gemini Notebook</p>
           <button type="button" class="copy-btn" data-copy-target="#prompt-meeting">
             <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
           </button>
@@ -112,7 +117,7 @@
       <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
         <div class="flow-step">録音</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step accent">AI</div>
+        <div class="flow-step accent">Gemini</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
         <div class="flow-step">記録</div>
       </div>
@@ -122,7 +127,7 @@
       </div>
       <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
         <div class="prompt-card-head">
-          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini</p>
+          <p class="prompt-recommend" style="margin-top:0;"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>Recommended: Gemini / Gemini Notebook</p>
           <button type="button" class="copy-btn" data-copy-target="#prompt-interview">
             <span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span class="copy-label">プロンプトをコピー</span>
           </button>
@@ -143,6 +148,26 @@
       </div>
     </div>
 
+    <div style="margin:2rem 0 2.5rem;">
+      <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:1rem;">Geminiとの使い分け</h3>
+      <div class="grid grid-2 reveal">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;">
+            <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--color-rose-deep);">chat</span>
+            <h4 style="font-weight:800;">Geminiに直接、音声を読み込ませる</h4>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-sub);line-height:1.85;">単発の会議・面談など、その場限りの内容をすぐに整理したいときに向いています（このページで紹介している使い方）。</p>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;">
+            <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--color-rose-deep);">folder</span>
+            <h4 style="font-weight:800;">Gemini Notebookに、音声を資料として追加する</h4>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-sub);line-height:1.85;">同じ音声（資料）から、議事録・記録・報告メールなど目的の異なる複数の文書を作りたいときに向いています。ひとつのソースを保持したまま、何度も違う切り口でプロンプトを送れます。</p>
+        </div>
+      </div>
+    </div>
+
     <div class="card case-card reveal">
       <div class="case-head"><span class="num">3</span><h3>アンケート</h3></div>
       <div class="flow-diagram" style="max-width:360px;margin-bottom:1.25rem;">
@@ -153,6 +178,13 @@
         <div class="flow-step accent">Gemini</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
         <div class="flow-step">分析</div>
+      </div>
+      <div class="tip-card" style="margin-bottom:1.25rem;flex-wrap:wrap;">
+        <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+        <div>
+          <p style="margin-bottom:0.75rem;"><strong>Googleフォームの作成にはBriskが便利です</strong><br>質問項目の下書きから選択肢の作成まで、AIが手伝ってくれるChrome拡張機能です。</p>
+          <a href="https://www.briskteaching.com/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Brisk公式サイトを見る<span class="material-symbols-outlined" aria-hidden="true">open_in_new</span></a>
+        </div>
       </div>
       <div class="prompt-card" style="border:none;background:var(--color-panel-bg);padding:1.25rem;">
         <div class="prompt-card-head">

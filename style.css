@@ -987,7 +987,14 @@ section.block.panel {
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.tag-card span.label { font-weight: 800; font-size: 0.92rem; }
+.tag-card span.label {
+  font-weight: 800;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
 
 /* ------------------------------------------------------------
    ケースカード（LESSON4：会議・面談・アンケート）
