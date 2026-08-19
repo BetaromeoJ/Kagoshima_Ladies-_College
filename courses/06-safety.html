@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>STEP6 学校で安全に生成AIを使う | ロイロ×Google維新 in鹿児島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== オープニング演出（sessionStorageで1ページにつき1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">STEP6<span class="splash-sub">学校で安全に生成AIを使う</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>ロイロ×Google維新<span class="sub">in鹿児島 2026</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">STEP一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>STEP一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">STEP一覧</a><span class="sep">/</span>
+      <span>STEP6</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">shield</span>STEP6</span>
+      <span class="step-mode-badge intro">本日は紹介のみ</span>
+      <h1>学校で安全に生成AIを使う</h1>
+      <p class="section-lead" style="margin-top:1rem;">本日のセッションでは概要のみのご紹介です。詳しい手順はこのページに掲載していますので、ぜひご自身のペースでお試しください。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="このSTEPの目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>このSTEPの内容</p>
+      <ol>
+        <li><a href="#goals">このSTEPでできるようになること</a></li>
+        <li><a href="#input">入力しない、または匿名化する情報</a></li>
+        <li><a href="#recording-ai-guide">音声録音・AI活用の前に確認しておきたいこと</a></li>
+        <li><a href="#check">AI回答の確認</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">このSTEPでできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>個人情報の扱いを理解する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>録音時の注意点を確認する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIの回答を必ず人が確認する習慣を身につける</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIを教師の判断を支える道具として利用する</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="input" class="block">
+    <div class="wrap">
+      <h2 class="section-title">入力しない、または匿名化する情報</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <ul>
+          <li>児童・保護者の氏名</li>
+          <li>住所、電話番号</li>
+          <li>成績</li>
+          <li>健康情報</li>
+          <li>家庭環境</li>
+          <li>生徒指導上の詳細</li>
+          <li>個人を特定できる面談記録</li>
+          <li>外部公開できない校内資料</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="recording-ai-guide" class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Recording &amp; AI</p>
+        <h2 class="section-title">🎙️ 音声録音・AI活用の前に確認しておきたいこと</h2>
+        <p class="section-lead">iPhoneなどで録音した音声をGeminiやGemini Notebookに読み込ませると、文字起こしや会議録、面談記録などを短時間で作成できます。一方、実際の学校現場で利用する場合は、「録音すること」と「録音したデータをAIで処理すること」を分けて考えることが大切です。便利だからこそ、相手への配慮と、学校・自治体のルールを確認したうえで活用しましょう。</p>
+      </div>
+
+      <!-- 1. 盗聴になる？ -->
+      <div class="card" style="margin-bottom:1.25rem;">
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">balance</span>1．相手に知らせず録音することは、すべて「盗聴」になる？</h3>
+        <p style="font-size:0.92rem;line-height:1.85;margin-bottom:1rem;">自分自身が参加している会話を録音することは、日本では一般的に、それだけで直ちに「盗聴」や違法行為になるわけではありません。ただし、次のような行為は、プライバシー侵害など別の問題につながる可能性があります。</p>
+        <div class="tip-card">
+          <span class="material-symbols-outlined" aria-hidden="true">info</span>
+          <ul>
+            <li>会話に参加していない第三者の会話を録音する</li>
+            <li>録音機器を無断で設置する</li>
+            <li>録音した内容を目的外で利用する</li>
+            <li>録音内容をSNSなどで公開する</li>
+          </ul>
+        </div>
+        <p style="font-size:0.92rem;line-height:1.85;margin-top:1rem;">学校現場では「法律上できるか」だけではなく、児童生徒・保護者との信頼関係や教育的配慮も重要です。</p>
+        <p class="footnote-note">※ このページは法律相談を目的としたものではありません。具体的な判断については、所属する学校・教育委員会等のルールを確認してください。</p>
+      </div>
+
+      <!-- 2. 録音とAIアップロードは別（最重要） -->
+      <div class="tip-card" style="margin-bottom:1.25rem;align-items:flex-start;">
+        <span class="material-symbols-outlined" aria-hidden="true">cloud_upload</span>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.75rem;">2．「録音」と「AIへのアップロード」は別に考える</h3>
+          <p style="margin-bottom:1rem;">録音した音声をGeminiやGemini Notebookにアップロードすると、次の3つの処理が行われます。録音自体が可能であっても、AIサービスへアップロードしてよいかどうかは別の問題です。</p>
+          <div class="flow-diagram" style="max-width:420px;">
+            <div class="flow-step">録音する</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">音声データをクラウドサービスへ送信する</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">AIに文字起こし・要約等をさせる</div>
+          </div>
+          <p style="margin:1.25rem 0 0.5rem;font-weight:700;">特に、次の情報が含まれる可能性がある音声は、慎重に扱う必要があります。</p>
+          <ul>
+            <li>児童生徒の氏名／保護者の氏名</li>
+            <li>成績・進路・家庭環境</li>
+            <li>健康に関する情報</li>
+            <li>生徒指導上の情報・相談内容</li>
+          </ul>
+          <p style="font-size:0.85rem;color:var(--color-text-sub);margin-top:0.5rem;">全体のリストは<a href="#input" style="color:var(--color-blue-deep);font-weight:700;">「入力しない、または匿名化する情報」</a>もあわせてご確認ください。</p>
+          <p style="margin:1.25rem 0 0.5rem;font-weight:700;">所属する自治体・学校の、次のルールを必ず確認してください。</p>
+          <ul>
+            <li>情報セキュリティポリシー</li>
+            <li>個人情報の取扱規程</li>
+            <li>生成AI利用ガイドライン</li>
+            <li>Google Workspace for Educationの運用ルール</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. 面談での配慮 -->
+      <div class="card" style="margin-bottom:1.25rem;">
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">forum</span>3．面談では、録音を伝えると話しにくくなることもある</h3>
+        <p style="font-size:0.92rem;line-height:1.85;margin-bottom:1rem;">面談では、録音することを伝えることで、保護者や児童生徒が緊張したり、本音を話しにくくなったりすることがあります。だからといって、無条件に「伝えず録音すればよい」ということではありません。学校として録音を行う場合には、次を整理しておくことが重要です。</p>
+        <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>何のために録音するのか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>どのように使用するのか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>誰が確認するのか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>いつ削除するのか</li>
+        </ul>
+      </div>
+
+      <!-- 4. 説明例 -->
+      <div class="card" style="margin-bottom:1.25rem;">
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">chat</span>4．伝える場合の説明例</h3>
+        <div class="quote-box" style="font-size:0.95rem;font-weight:500;line-height:1.9;">
+          「面談内容を正確に記録し、聞き漏らしを防ぐため、音声を録音させていただいてもよろしいでしょうか。録音した内容は面談記録の作成に使用し、学校のルールに従って適切に管理します。」
+        </div>
+        <p style="font-size:0.88rem;color:var(--color-text-sub);margin:1rem 0 0.5rem;">AIを利用する場合は、必要に応じて、利用目的の説明も検討します。</p>
+        <div class="quote-box" style="font-size:0.95rem;font-weight:500;line-height:1.9;">
+          「録音した音声は、学校で利用を認められているAIサービスを使って文字起こし・要約を行い、面談記録作成のために使用します。」
+        </div>
+      </div>
+
+      <!-- 5. 研修は架空データで（安心・推奨トーン） -->
+      <div class="tip-card">
+        <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.75rem;">5．研修では「架空データ」で練習する</h3>
+          <p>研修で音声→AIの操作方法を練習する場合は、実在する児童生徒や保護者との面談音声ではなく、教職員同士の模擬会議、架空の保護者面談、架空の生徒面談、講師が準備したサンプル音声などを利用することを推奨します。操作方法を学ぶことが目的であれば、個人情報を含む実際の音声データを使用する必要はありません。</p>
+        </div>
+      </div>
+
+      <!-- このセクションのまとめ -->
+      <div class="quote-box" style="margin-top:2rem;text-align:center;">
+        「できるかどうか」ではなく、<br>「安心して使えるかどうか」を考える。
+        <p style="font-size:0.85rem;font-weight:500;margin-top:1rem;opacity:0.85;">AIを学校現場で活用するときに大切なのは、便利さだけではありません。この4つを確認したうえで、AIを校務改善に活用しましょう。</p>
+        <div class="grid grid-4" style="margin-top:1.5rem;text-align:center;">
+          <div>
+            <div class="goal-card-head" style="justify-content:center;margin-bottom:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">diversity_3</span></div>
+            <p style="font-weight:700;font-size:0.82rem;">① 相手への配慮</p>
+          </div>
+          <div>
+            <div class="goal-card-head" style="justify-content:center;margin-bottom:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">lock</span></div>
+            <p style="font-weight:700;font-size:0.82rem;">② 個人情報の保護</p>
+          </div>
+          <div>
+            <div class="goal-card-head" style="justify-content:center;margin-bottom:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">policy</span></div>
+            <p style="font-weight:700;font-size:0.82rem;">③ 学校・自治体のルール</p>
+          </div>
+          <div>
+            <div class="goal-card-head" style="justify-content:center;margin-bottom:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">flag</span></div>
+            <p style="font-weight:700;font-size:0.82rem;">④ 利用目的の明確化</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- チェックリスト -->
+      <div class="card" style="margin-top:1.5rem;">
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;"><span class="material-symbols-outlined" aria-hidden="true">checklist</span>録音・AI活用チェックリスト</h3>
+        <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>この音声を録音する目的は明確ですか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>録音が本当に必要ですか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>相手への説明・同意が必要か確認しましたか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>個人情報やセンシティブな内容が含まれていませんか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>AIサービスへのアップロードが学校・自治体で認められていますか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>使用するAIアカウントは学校が認めたアカウントですか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>共有範囲を必要最小限にしていますか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>録音データの保存期間・削除方法を決めていますか？</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_box_outline_blank</span>研修目的なら架空データで代替できませんか？</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="check" class="block">
+    <div class="wrap">
+      <h2 class="section-title">AI回答の確認</h2>
+      <div class="card">
+        <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>事実と一致しているか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>入力していない内容を追加していないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>日時、人数、担当者が正しいか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>表現に偏りや決めつけがないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>著作権上の問題がないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>最終判断を人が行っているか</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>安全確認プロンプト</h4>
+            <p class="prompt-scene">入力前に、個人情報が含まれていないかAI自身にも確認させます（最終判断は必ず人が行います）。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt6-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt6-1">これから入力する文章に、
+氏名、住所、電話番号、成績、健康情報など
+個人を特定できる情報が含まれていないか確認してください。
+
+含まれている場合は、
+どの部分か具体的に指摘してください。
+
+---
+（ここに確認したい文章を貼り付けてください）</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>個人面談記録を共有する前に確認する</h4>
+        <p>個人面談の記録をGeminiで整理する前に、安全確認プロンプトで氏名や家庭環境に関する記述が含まれていないかを確認。指摘された箇所を仮名・記号に置き換えてから、あらためて要約を依頼しました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">まとめのメッセージ</h2>
+      <div class="quote-box" style="font-size:1rem;">
+        AIに教師の仕事を任せるのではありません。<br><br>
+        文字起こし、整理、言い換え、形式変換をAIに任せ、
+        教師は、判断すること、子どもを見ること、
+        人と関わることに時間を使います。
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc6-1">
+          <span>個人情報を入力してしまったかもしれない</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc6-1">
+          <p>速やかに学校・自治体の情報管理担当者に相談してください。該当のチャット履歴の削除など、自治体のルールに従って対応します。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>もご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="../index.html#courses" class="btn btn-primary">全6STEPを振り返る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

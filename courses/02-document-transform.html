@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>STEP2 同じ情報をGemini Notebookで別の文書に変換する | ロイロ×Google維新 in鹿児島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== オープニング演出（sessionStorageで1ページにつき1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">STEP2<span class="splash-sub">同じ情報をGemini Notebookで別の文書に変換する</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>ロイロ×Google維新<span class="sub">in鹿児島 2026</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">STEP一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>STEP一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">STEP一覧</a><span class="sep">/</span>
+      <span>STEP2</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">folder_special</span>STEP2</span>
+      <span class="step-mode-badge live">本日ライブ実演</span>
+      <h1>同じ情報をGemini Notebookで別の文書に変換する</h1>
+      <p class="section-lead" style="margin-top:1rem;">本日のセッションでライブ実演します。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="このSTEPの目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>このSTEPの内容</p>
+      <ol>
+        <li><a href="#goals">このSTEPでできるようになること</a></li>
+        <li><a href="#choose">Geminiとの使い分け</a></li>
+        <li><a href="#prep">録音前の工夫：イニシャルトーク</a></li>
+        <li><a href="#flow">基本の流れ</a></li>
+        <li><a href="#steps">操作手順</a></li>
+        <li><a href="#exercise">デモ音声で演習する</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">このSTEPでできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>学年会・担任会などの音声をGemini Notebookに記録として保存する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>同じ音声から、目的に応じた複数の文書をあとから作成する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Geminiで直接処理する場合とGemini Notebookに保存する場合を使い分ける</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>録音前に、個人情報に配慮したイニシャルトークを取り入れる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="choose" class="block">
+    <div class="wrap">
+      <h2 class="section-title">Geminiとの使い分け</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">Geminiのチャットは、会話がその場で流れていく形式です。音声を送って一度変換したら、その音声を何度も参照するには不向きです。一方Gemini Notebookは、音声や資料を「ソース」として保存できるため、同じ音声を記録として残し、あとから何度でも別の文書に変換できます。</p>
+      <div class="grid grid-2">
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+            <h3>Geminiに直接投げる</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>その場で1つの文書に変換すれば十分なとき</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声を記録として残す必要がないとき</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>すぐに結果がほしい、簡単な打合せのとき</li>
+          </ul>
+        </div>
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">folder_special</span>
+            <h3>Gemini Notebookに記録として保存する</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>同じ音声から複数の文書をあとから何度も作りたいとき</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>学年会・担任会など、正式な記録として残しておきたいとき</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>後日、別の資料と合わせて活用したいとき（STEP3と連携）</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声を毎回添付し直さず、同じソースへ何度も質問したいとき</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prep" class="block">
+    <div class="wrap">
+      <h2 class="section-title">録音前の工夫：イニシャルトーク</h2>
+      <div class="tip-card">
+        <span class="material-symbols-outlined" aria-hidden="true">tips_and_updates</span>
+        <div>
+          <p><strong>学年会や担任会など、録音することを前提とした会議</strong>では、あらかじめ「児童の名前はイニシャルで呼ぶ」というルールを共有しておくと、音声データそのものに個人情報が含まれにくくなります。</p>
+          <ul>
+            <li>例：田中まさひろさん → 「MAくん」</li>
+            <li>例：鈴木さとしさん → 「SSくん」</li>
+          </ul>
+          <p>こうしておけば、Gemini Notebookに保存する音声も、Geminiへその場で送る音声も、どちらも個人情報のリスクを減らした状態でAIに読み込ませることができます。最終的な文書に正式な氏名が必要な場合は、AIの出力をそのまま使わず、人の手でイニシャルを氏名に置き換えてください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="block">
+    <div class="wrap">
+      <h2 class="section-title">基本の流れ</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">録音前にイニシャルトークを共有（学年会・担任会など）</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">録音アプリで会議を録音</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">Gemini Notebookに音声をソースとして追加（記録として保存）</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">目的別のプロンプトを送信</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">必要になるたびに、同じソースから別の文書を作成</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="block">
+    <div class="wrap">
+      <h2 class="section-title">操作手順</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">Gemini Notebookへの音声の追加方法は<a href="../guides/basic-operation.html" style="color:var(--color-blue-deep);font-weight:700;">基礎操作ページ</a>の手順も参考にしてください。</p>
+      <div class="card">
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>録音前にイニシャルトークを確認する</h4><p>学年会・担任会などでは、あらかじめ児童の呼び方をイニシャルにそろえておきます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>録音アプリで会議を録音する</h4><p>iPhone・iPadは「ボイスメモ」、Windows機は「サウンドレコーダー」、Google Pixelは「Googleレコーダー」で、学年会・担任会など、記録として残したい会議を録音します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>音声データをそのままGemini Notebookに渡し、新しいノートブックを作成し、音声をソースとして追加する</h4><p>iPhone・iPadは共有メニューからGemini Notebookを選びます。Windows機は、サウンドレコーダーで録音した音声データがドキュメントフォルダに保存されるので、それをGemini Notebookの画面にドラッグ＆ドロップします。新しいノートブックを作成して音声をソースとして追加すれば、音声が記録としてノートブックの中に保存されます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>目的に応じてコピー用プロンプトを貼り付けて送信する</h4><p>保護者向け・学級通信・管理職への報告など、必要な文書のプロンプトを送信します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body"><h4>別の文書が必要になったら、同じノートブックを開く</h4><p>音声を追加し直す必要はありません。同じソースに新しいプロンプトを送るだけで、別の文書を作成できます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-body"><h4>内容を確認する</h4><p>入力していない情報や、イニシャル以外の個人名が含まれていないか必ず確認します。</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercise" class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Exercise</p>
+        <h2 class="section-title">🎙️ STEP2｜デモ音声をAIに読み込ませてみよう</h2>
+        <p class="section-lead">ここからは、実際の音声データを使って演習します。今回は、個人情報を含まない研修用の「デモ音声」を使用します。iPhoneなどで録音した音声をGeminiやGemini Notebookに読み込ませることで、文字起こし、会議録の作成、要約、重要事項の抽出、報告文への変換などができます。まずは下のボタンまたは2次元コードから、デモ音声を開いてください。</p>
+      </div>
+
+      <!-- デモ音声へのアクセス -->
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <a href="https://drive.google.com/file/d/1SA3BvDyyf7jepwEgcusywnzJGu5wHr9W/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 2.2rem;">🎧 デモ音声を開く<span class="material-symbols-outlined" aria-hidden="true">open_in_new</span></a>
+        <div style="margin-top:1.75rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+          <img src="../assets/images/step2-demo-audio-qr.png" alt="デモ音声を開くための2次元コード" style="width:160px;height:160px;border-radius:var(--radius-sm);border:1px solid var(--color-border);">
+          <p style="font-size:0.85rem;color:var(--color-text-sub);max-width:320px;">スマートフォン・タブレットから参加している方は、2次元コードから開くこともできます。</p>
+        </div>
+      </div>
+
+      <!-- 操作手順 -->
+      <div class="card" style="margin-top:1.25rem;">
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>デモ音声を開く</h4><p>「🎧 デモ音声を開く」ボタン、または2次元コードからGoogleドライブを開きます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>音声ファイルを端末に保存する</h4><p>Googleドライブ上の音声を、使用している端末にダウンロードしてください。共有元の音声は「閲覧者」権限のため、元データを変更することはありません。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>Geminiを開く</h4><p>Geminiを起動します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>音声ファイルを追加する</h4><p>「＋」やファイル追加の操作から、先ほど保存したデモ音声を添付します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body"><h4>プロンプトを入力する</h4><p>音声を添付したあと、下の演習用プロンプトを入力します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-body"><h4>AIの出力を確認する</h4><p>文字起こし、会議録、要約などがどのように生成されるか確認します。</p></div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Gemini Notebookで行う場合 -->
+      <div class="tip-card" style="margin-top:1.25rem;">
+        <span class="material-symbols-outlined" aria-hidden="true">folder_special</span>
+        <p><strong>Gemini Notebookを利用する場合</strong>も、基本的な流れは同じです。デモ音声を各自の端末またはGoogleドライブに保存したあと、Gemini Notebookのソースとして追加してください。※利用しているGoogle Workspace環境やアカウントの設定によって、追加できるファイル形式や操作方法が異なる場合があります。</p>
+      </div>
+
+      <!-- 演習用プロンプト -->
+      <div class="prompt-card" style="margin-top:1.25rem;">
+        <div class="prompt-card-head">
+          <div>
+            <h4>まずはこれを試してみよう</h4>
+            <p class="prompt-scene">デモ音声を添付したあと、このプロンプトを送信してください。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-4">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-4">添付した音声データの内容を文字起こししてください。
+
+そのうえで、以下の形式で会議録を作成してください。
+
+・会議の概要
+・主な話題
+・決定したこと
+・今後対応すること
+・重要な発言や確認事項
+
+音声が聞き取れない部分については、内容を推測せず、
+「聞き取り不明」としてください。
+
+音声データに含まれていない情報を補完したり、創作したりしないでください。</div>
+      </div>
+
+      <!-- さらに試してみよう -->
+      <div class="tip-card" style="margin-top:1.25rem;">
+        <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+        <div>
+          <p style="font-weight:800;margin-bottom:0.5rem;">💡 AIへの指示を変えると、出力も変わる</p>
+          <p>同じ音声でも、プロンプトを変えることでさまざまな文書に変換できます。</p>
+          <ul>
+            <li>「3行で要約してください」</li>
+            <li>「箇条書きで整理してください」</li>
+            <li>「職員向けの報告文にしてください」</li>
+            <li>「保護者に伝える文章にしてください」</li>
+            <li>「ToDoだけ抜き出してください」</li>
+            <li>「発言者ごとに整理してください」</li>
+          </ul>
+          <p>「AIに何を作らせるか」を具体的に指示することがポイントです。</p>
+        </div>
+      </div>
+
+      <!-- 重要な注意事項 -->
+      <div class="tip-card" style="margin-top:1.25rem;">
+        <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+        <div>
+          <p style="font-weight:800;margin-bottom:0.5rem;">🔐 実際の学校現場で使うときは</p>
+          <p>今回使用する音声は、研修用に作成したデモ音声です。実際の児童生徒・保護者・教職員との面談や会議の音声をAIに読み込ませる場合は、次を必ず確認してください。</p>
+          <ul>
+            <li>個人情報が含まれていないか</li>
+            <li>録音の目的は明確か</li>
+            <li>AIへのアップロードが学校・自治体で認められているか</li>
+            <li>使用するアカウントが適切か</li>
+            <li>録音データをどのように保存・削除するか</li>
+          </ul>
+          <p style="font-weight:700;">「録音できること」と「AIにアップロードしてよいこと」は別です。</p>
+          <p>所属する学校・自治体のルールに従って活用してください。詳しくは<a href="06-safety.html#recording-ai-guide" style="color:var(--color-blue-deep);font-weight:700;">STEP6「音声録音・AI活用の前に確認しておきたいこと」</a>もご確認ください。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">以下のプロンプトは、Gemini Notebookに保存した音声ソースに対して送信します。目的が変わるたびに、同じソースへ新しいプロンプトを送るだけで文書を作り直せます。</p>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト1：面談記録と保護者への報告メッセージ</h4>
+            <p class="prompt-scene">担任と生徒の面談音声を、面談記録と保護者向けメッセージの2段階で整理します。個人情報の扱いに特に注意してください。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-1">添付した音声データは、担任Aと生徒Sさんの面談を録音したものです。
+
+音声の内容を確認し、次の2段階で整理してください。
+
+【1．面談記録】
+
+以下の項目に分けて、事実に基づいて整理してください。
+
+・面談の主な目的
+・生徒が話した内容
+・担任が確認した内容
+・生徒の困りごとや不安
+・生徒の希望や考え
+・担任から伝えたこと
+・今後の対応
+・確認が必要なこと
+
+【2．保護者への報告メッセージ】
+
+面談記録をもとに、保護者へ伝えるためのメッセージを作成してください。
+
+条件
+・丁寧で安心感のある表現にする
+・面談で確認できた事実のみを書く
+・生徒を責める表現や決めつけを避ける
+・生徒の発言を必要以上に断定しない
+・学校として今後どのように関わるかを示す
+・保護者に確認や協力をお願いする内容がある場合は、柔らかく伝える
+・400字程度にまとめる
+・担任がそのまま送るのではなく、最終確認して使用できる文面にする
+
+【重要な注意事項】
+
+・音声が聞き取れない部分は推測して補わないでください
+・聞き取れた内容だけを使って整理してください
+・不明瞭な部分は「聞き取り不明」または「確認が必要」と示してください
+・音声にない情報を追加しないでください
+・話者を判断できない部分は、無理に担任または生徒の発言として分類しないでください
+・感情や意図は断定せず、「〜と話している」「〜と受け取れる」など慎重に表現してください
+・病気、障害、家庭状況などについて、音声だけで診断や推測をしないでください
+・保護者への報告に適さない個人的な内容や、本人の尊厳を損なう表現は避けてください
+
+最後に、保護者へ送る前に担任が確認すべき点を、
+「要確認事項」として箇条書きで示してください。</div>
+        <p class="prompt-note">面談内容には健康・家庭状況など特に配慮が必要な情報が含まれます。使用前に必ず<a href="06-safety.html#recording-ai-guide" style="color:var(--color-blue-deep);font-weight:700;">STEP6「音声録音・AI活用の前に確認しておきたいこと」</a>を確認し、出力は必ず担任が最終確認したうえで使用してください。</p>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト2：学級通信</h4>
+            <p class="prompt-scene">学級通信に掲載する記事として仕上げます。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-2">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-2">この音声ソースの内容を、学級通信に掲載する記事にしてください。
+
+条件
+・児童の学びや成長が伝わる文章
+・保護者が前向きに読める表現
+・個人が特定される内容は入れない
+・見出しを付ける
+・300字程度にする</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト3：管理職への報告</h4>
+            <p class="prompt-scene">結論から整理した報告文にします。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-3">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-3">この音声ソースの内容を、管理職への報告文にしてください。
+
+次の順番で整理してください。
+
+1. 結論
+2. 現状
+3. 対応したこと
+4. 今後必要なこと
+5. 確認をお願いしたいこと
+
+簡潔で事実に基づく文章にしてください。</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>生徒との面談や学年会をGemini Notebookに記録として残す</h4>
+        <p>担任Aが行った生徒Sさんとの面談をイニシャルトークで録音し、Gemini Notebookにソースとして追加。プロンプト1で面談記録と保護者への報告メッセージの案を作成し、内容を確認したうえで保護者へ伝えました。同じように学年会の音声を追加しておけば、学級通信を作る際にはプロンプト2、管理職への報告が必要なときはプロンプト3を送信するだけで、それぞれの文書をあとから作成できます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">注意点</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <ul>
+          <li>入力していない情報をAIが追加していないか、必ず確認する。</li>
+          <li>個人が特定される内容（氏名・写真の説明など）を保護者文書・学級通信に入れない。イニシャルのまま出力された場合は、最終的な文書で人の手により正式な氏名に置き換える。</li>
+          <li>Gemini Notebookに保存した音声は正式な記録として扱われるため、保存期間や共有範囲を学校のルールに従って管理する。</li>
+          <li>文字数や表現の条件は、学校の実情に合わせて調整する。</li>
+          <li>公開・配布前に、必ず管理職・学年での確認を経る。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc2-1">
+          <span>Gemini Notebookに音声を追加できない</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc2-1">
+          <p>対応形式やファイルサイズの確認、Googleドライブ経由での追加などをお試しください。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>をご確認ください。</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc2-2">
+          <span>出力が長すぎる、または短すぎる</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc2-2">
+          <p>プロンプトの「◯字以内」「◯字程度」の数字を変更して、再度送信してください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="03-gemini-notebook.html" class="btn btn-primary">次のSTEPへ：Gemini Notebookで資料を活用する<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

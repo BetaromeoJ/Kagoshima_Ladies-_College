@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>トラブル対処 | ロイロ×Google維新 in鹿児島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>ロイロ×Google維新<span class="sub">in鹿児島 2026</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">STEP一覧</a>
+        <a href="basic-operation.html">基礎操作</a>
+        <a href="troubleshooting.html">トラブル対処</a>
+        <a href="../courses/06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>STEP一覧</a>
+    <a href="basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="youtube.html"><span class="material-symbols-outlined" aria-hidden="true">smart_display</span>解説動画一覧</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <span>トラブル対処</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">build</span>Troubleshooting</span>
+      <h1>トラブル対処</h1>
+      <p class="section-lead" style="margin-top:1rem;">セッション中や実際の校務・授業で困ったときに確認してください。項目をタップすると詳しい対処方法が開きます。</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="grid grid-2">
+
+        <div class="card trouble-card">
+          <h3><span class="material-symbols-outlined" aria-hidden="true">mic_off</span>Geminiに音声を添付できない</h3>
+          <ol>
+            <li>アカウントを確認する</li>
+            <li>アプリ版とブラウザ版を切り替える</li>
+            <li>ファイル形式を確認する</li>
+            <li>音声を「ファイル」に保存してから添付する</li>
+            <li>自治体のセキュリティ設定を確認する</li>
+          </ol>
+        </div>
+
+        <div class="card trouble-card">
+          <h3><span class="material-symbols-outlined" aria-hidden="true">library_add_check</span>Gemini Notebookに音声を追加できない</h3>
+          <ol>
+            <li>対応形式を確認する</li>
+            <li>ファイルサイズを確認する</li>
+            <li>Googleドライブ経由を試す</li>
+            <li>文字起こしした文書を代替ソースとして追加する</li>
+          </ol>
+        </div>
+
+        <div class="card trouble-card">
+          <h3><span class="material-symbols-outlined" aria-hidden="true">slideshow</span>Canvaにスライドを読み込めない</h3>
+          <ol>
+            <li>PowerPointまたはPDFで出力する</li>
+            <li>ファイルサイズを確認する</li>
+            <li>一度端末へ保存する</li>
+            <li>別のブラウザを試す</li>
+          </ol>
+        </div>
+
+        <div class="card trouble-card">
+          <h3><span class="material-symbols-outlined" aria-hidden="true">refresh</span>以前の画面が表示される</h3>
+          <ol>
+            <li>Safariを再読み込みする</li>
+            <li>タブを閉じて開き直す</li>
+            <li>履歴やWebサイトデータを確認する</li>
+            <li>プライベートブラウズで開く</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>解決しない場合は、基礎操作ページの動画もあわせて確認してください。</p>
+      <a href="basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+    </div>
+    <div class="page-nav">
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

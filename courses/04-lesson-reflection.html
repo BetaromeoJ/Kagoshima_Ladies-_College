@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>STEP4 授業音声を振り返りに生かす | ロイロ×Google維新 in鹿児島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== オープニング演出（sessionStorageで1ページにつき1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">STEP4<span class="splash-sub">授業音声を振り返りに生かす</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>ロイロ×Google維新<span class="sub">in鹿児島 2026</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">STEP一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>STEP一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">STEP一覧</a><span class="sep">/</span>
+      <span>STEP4</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">graphic_eq</span>STEP4</span>
+      <span class="step-mode-badge intro">本日は紹介のみ</span>
+      <h1>授業音声を振り返りに生かす</h1>
+      <p class="section-lead" style="margin-top:1rem;">本日のセッションでは概要のみのご紹介です。詳しい手順はこのページに掲載していますので、ぜひご自身のペースでお試しください。</p>
+    </div>
+  </section>
+
+  <!-- 中心メッセージ -->
+  <div class="wrap">
+    <div class="quote-box" style="font-size:1.05rem;padding:1.5rem 1.75rem;">
+      自分の授業音声を客観的な振り返り材料として活用し、<br>
+      授業のよさや改善の可能性を確認する
+    </div>
+  </div>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="このSTEPの目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>このSTEPの内容</p>
+      <ol>
+        <li><a href="#goals">このSTEPでできるようになること</a></li>
+        <li><a href="#flow">基本の流れ</a></li>
+        <li><a href="#steps">操作手順</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">このSTEPでできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>自分の授業音声を録音し、Geminiに共有する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>授業の流れや発問、児童の発言場面を客観的に整理する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>授業のよさや改善の可能性を確認する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>次の授業で試せる具体的な工夫を考える</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="block">
+    <div class="wrap">
+      <h2 class="section-title">基本の流れ</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">授業を録音</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">音声をGeminiへ共有</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">振り返り用プロンプトで分析</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">よさ・改善点を確認</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">次時への改善案を作成</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="block">
+    <div class="wrap">
+      <h2 class="section-title">操作手順</h2>
+      <div class="card">
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>授業を録音する</h4><p>端末の録音アプリ（iPhone・iPadはボイスメモ、Windows機はサウンドレコーダー、Google PixelはGoogleレコーダー）を使い、校内・自治体のルールを確認し、録音の目的を明確にしてから録音します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>音声ファイルをGeminiへ共有する</h4><p>STEP1と同じ手順で、音声ファイルをGeminiに添付します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>振り返り用プロンプトを送信する</h4><p>下のプロンプトをコピーして送信し、10の観点で分析してもらいます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>分析結果を自分の授業の記憶と照らし合わせる</h4><p>音声だけでは分からない教室の様子（表情・板書など）を思い出しながら確認します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body"><h4>次時への改善プロンプトで改善案を作成する</h4><p>分析結果を基に、次の授業で試す具体的な工夫を3つ提案してもらいます。</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>振り返り用プロンプト</h4>
+            <p class="prompt-scene">授業音声を10の観点で客観的に分析します。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt4-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt4-1">添付した授業音声を、
+客観的な振り返り材料として分析してください。
+
+次の観点で整理してください。
+
+1. 授業の流れ
+2. 教師が行った主な説明
+3. 教師が行った主な発問
+4. 児童が発言している場面
+5. 発問後に考える時間を取っている場面
+6. 児童の発言を教師がどのように受け止めているか
+7. 同じ説明を繰り返している場面
+8. 授業のよさ
+9. 改善の可能性がある点
+10. 次の授業で試せる具体的な工夫
+
+音声だけでは判断できない内容については、
+推測せず「音声のみでは判断できない」と示してください。
+
+この分析は授業の評価ではなく、
+教師自身の振り返りを支援する材料としてまとめてください。</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>次時への改善プロンプト</h4>
+            <p class="prompt-scene">分析結果を基に、次の授業で試す改善案を提案します。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt4-2">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt4-2">先ほどの分析を基に、
+次の授業で試す改善案を3つ提案してください。
+
+各改善案について、
+
+・改善する理由
+・具体的な教師の働きかけ
+・児童の反応を確認するポイント
+・授業後に振り返るポイント
+
+を示してください。</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>算数の発問場面を振り返る</h4>
+        <p>算数の授業を録音し、振り返り用プロンプトで分析。「発問後に考える時間が短い場面がある」という指摘を受け、次時への改善プロンプトで「発問後に10秒待つ」という具体的な工夫を提案してもらいました。次の授業で実際に試し、児童の発言が増えたことを確認しました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">注意点</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <p>
+          音声だけでは、児童の表情、ノート、板書、
+          教室全体の様子などは確認できません。<br><br>
+          AIの分析を授業評価とせず、
+          教師自身が振り返るための材料として使用してください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc4-1">
+          <span>Geminiに授業音声を添付できない・分析が途中で止まる</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc4-1">
+          <p>音声が長い場合はファイルサイズを確認し、必要に応じて分割してください。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>をご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="05-studio-canva.html" class="btn btn-primary">次のSTEPへ：StudioとCanvaで教材を作る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

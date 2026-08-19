@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>STEP1 音声データをGeminiで仕事に変える | ロイロ×Google維新 in鹿児島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== オープニング演出（sessionStorageで1ページにつき1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">STEP1<span class="splash-sub">音声データをGeminiで仕事に変える</span></p>
+  </div>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>ロイロ×Google維新<span class="sub">in鹿児島 2026</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">STEP一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>STEP一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">STEP一覧</a><span class="sep">/</span>
+      <span>STEP1</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">mic</span>STEP1</span>
+      <span class="step-mode-badge intro">本日は紹介のみ</span>
+      <h1>音声データをGeminiで仕事に変える</h1>
+      <p class="section-lead" style="margin-top:1rem;">本日のセッションでは概要のみのご紹介です。詳しい手順はこのページに掲載していますので、ぜひご自身のペースでお試しください。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="このSTEPの目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>このSTEPの内容</p>
+      <ol>
+        <li><a href="#goals">このSTEPでできるようになること</a></li>
+        <li><a href="#flow">基本の流れ</a></li>
+        <li><a href="#steps">操作手順</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">このSTEPでできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>端末の録音アプリ（ボイスメモ／サウンドレコーダー／Googleレコーダーなど）で録音する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声データをGeminiへ渡す</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声の内容を要約する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>議事録やToDoを作成する</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="block">
+    <div class="wrap">
+      <h2 class="section-title">基本の流れ</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">録音する</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">音声データを渡す</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">Geminiで確認</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">要約</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">議事録・ToDo作成</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="block">
+    <div class="wrap">
+      <h2 class="section-title">操作手順</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">録音アプリの使い方など、基本的な操作は<a href="../guides/basic-operation.html" style="color:var(--color-blue-deep);font-weight:700;">基礎操作ページ</a>も参考にしてください。</p>
+      <div class="card">
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>録音する</h4><p>端末に応じた録音アプリ（iPhone・iPadは「ボイスメモ」、Windows機は「サウンドレコーダー」、Google Pixelは「Googleレコーダー」）を開き、録音を開始します。会議や打合せの内容を録音します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>音声データをGeminiに渡す</h4><p>iPhone・iPadは共有ボタンから直接Gemini（またはGemini Notebook）を選び、そのまま添付します。Windows機は、サウンドレコーダーで録音した音声データがドキュメントフォルダに保存されるので、それをGeminiの画面にドラッグ＆ドロップします。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>コピー用プロンプトを貼り付けて送信する</h4><p>下のプロンプトをコピーし、Geminiに貼り付けて送信します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>結果を確認する</h4><p>出力された内容が音声と一致しているか、必ず人が確認します。</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト1：要約と整理</h4>
+            <p class="prompt-scene">録音した音声を、文字起こしを挟まずそのまま要約し、話し合いの内容を整理します。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt1-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt1-1">添付した音声の内容を要約し、次の項目に分けて整理してください。
+
+・話題
+・主な意見
+・決まったこと
+・今後行うこと
+・確認が必要なこと
+
+音声から判断できない内容は推測せず、
+「確認が必要」と示してください。</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト2：議事録</h4>
+            <p class="prompt-scene">整理した内容を、職員間で共有できる議事録にします。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt1-2">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt1-2">先ほどの内容を、職員間で共有するための
+簡潔な議事録にしてください。
+
+次の構成にしてください。
+
+・会議の目的
+・主な協議内容
+・決定事項
+・担当者
+・期限
+・次回確認すること
+
+担当者や期限が確認できない場合は、
+勝手に補わず「未確認」としてください。</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト3：ToDo</h4>
+            <p class="prompt-scene">今後行うことだけを表形式で抽出します。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt1-3">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt1-3">この内容から、今後行うことだけを抽出してください。
+
+表形式で、
+
+・作業内容
+・担当者
+・期限
+・確認事項
+
+に分けてください。
+
+音声で確認できない項目は「未確認」としてください。</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>職員朝会の録音から連絡文を作る</h4>
+        <p>職員朝会をボイスメモで録音し、そのままGeminiに共有。プロンプト1で要約と整理を行い、プロンプト2で管理職への報告に使える議事録を作成。プロンプト3で自分が担当する作業だけをToDoとして抽出し、期限を確認しました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">注意点</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <ul>
+          <li>児童・保護者の氏名や個人情報が含まれる音声は、そのままAIへ入力しない。</li>
+          <li>録音する前に、目的を説明し、無断で録音しない。</li>
+          <li>AIが生成した議事録・ToDoは、必ず人が内容を確認してから使用する。</li>
+          <li>担当者・期限など、音声から判断できない項目は「未確認」のまま扱う。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc1-1">
+          <span>Geminiに音声を添付できない</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc1-1">
+          <p>アカウントの確認、アプリ版とブラウザ版の切り替え、ファイル形式の確認などが必要です。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>をご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="02-document-transform.html" class="btn btn-primary">次のSTEPへ：同じ情報をGemini Notebookで別の文書に変換する<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
